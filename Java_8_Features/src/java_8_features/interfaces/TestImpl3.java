@@ -17,5 +17,7 @@ public class TestImpl3 implements Test {
 		//to access static method present in interface
 		//interfaceName.methodName()
 		Test.add();
-		TestImpl3.add();	}
+		TestImpl3.add();	
+		
+	}
 }
