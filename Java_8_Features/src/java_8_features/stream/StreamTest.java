@@ -130,6 +130,7 @@ public class StreamTest {
 		System.out.println("=================Sort Emp List================== ");
 		//empList.stream().sorted().forEach(e->System.out.println(e)); //error:Employee cannot be cast to class java.lang.Comparable //without implenting Comparable in Employee class
 		empList.stream().sorted().forEach((e)->System.out.println(e));
+		
 		System.out.println("=================DESC======================");
 		empList.stream().sorted(Collections.reverseOrder()).forEach((e)->System.out.println(e)); 
 		
