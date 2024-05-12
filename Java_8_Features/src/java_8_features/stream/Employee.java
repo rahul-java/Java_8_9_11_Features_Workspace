@@ -1,6 +1,6 @@
 package java_8_features.stream;
 
-public class Employee {
+public class Employee implements Comparable<Employee> {
 
 	private int empId;
 	private String empName;
@@ -35,6 +35,17 @@ public class Employee {
 	public String toString() {
 		return "Employee [empId=" + empId + ", empName=" + empName + ", empSalary=" + empSalary + "]";
 	}
+	public static int compare(Employee e1,Employee e2) {
+		// TODO Auto-generated method stub
+		return (e1.getEmpId()<e2.getEmpId())?-1:(e1.getEmpId()==e2.getEmpId())?0:1;
+	}
+
+	@Override
+	public int compareTo(Employee e) {
+		// TODO Auto-generated method stub
+		return compare(this, e);
+	}
+	
 	
 	
 }

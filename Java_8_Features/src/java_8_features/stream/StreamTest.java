@@ -7,7 +7,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import java_8_features.collection_inhancement.Employee;
 
 public class StreamTest {
 
@@ -126,6 +125,20 @@ public class StreamTest {
 		Employee employee1 = empList.stream().min((e1,e2)->e1.getEmpSalary()<e2.getEmpSalary()?-1:e1.getEmpSalary()==e2.getEmpSalary()?0:1).get();
 		System.out.println("Min Salary Employee :"+employee1);
 		
+		//sort empList
+		System.out.println("==========Using Comparable implementation Employee class===============");
+		System.out.println("=================Sort Emp List================== ");
+		//empList.stream().sorted().forEach(e->System.out.println(e)); //error:Employee cannot be cast to class java.lang.Comparable //without implenting Comparable in Employee class
+		empList.stream().sorted().forEach((e)->System.out.println(e));
+		System.out.println("=================DESC======================");
+		empList.stream().sorted(Collections.reverseOrder()).forEach((e)->System.out.println(e)); 
+		
+		System.out.println("=================Sort Emp List by Salary ASC================== ");
+		empList.stream().sorted((e1,e2)->e1.getEmpSalary()<e2.getEmpSalary()?-1:e1.getEmpSalary()==e2.getEmpSalary()?0:1).forEach((e)->System.out.println(e));
+		
+		System.out.println("=================Sort Emp List by Salary DESC================== ");
+		empList.stream().sorted((e1,e2)->e1.getEmpSalary()<e2.getEmpSalary()?1:e1.getEmpSalary()==e2.getEmpSalary()?0:-1).forEach((e)->System.out.println(e)); 
+
 	}
 
 	private static boolean validateEmpName(String empName) {
