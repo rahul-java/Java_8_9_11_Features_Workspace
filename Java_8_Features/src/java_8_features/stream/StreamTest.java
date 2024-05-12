@@ -1,6 +1,7 @@
 package java_8_features.stream;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -64,6 +65,7 @@ public class StreamTest {
 		numbers.add(115);
 		numbers.add(120);
 		numbers.add(125);
+		numbers.add(25);
 		
 		//write a lambda expression to print the even numbers
 		System.out.println("----------write a lambda expression to print the even numbers-------");
@@ -102,9 +104,27 @@ public class StreamTest {
 		Integer maxVal = numbers.stream().max((i,j)->(i<j)?-1:(i==j)?0:1).get();
 		System.out.println("Max Value : "+maxVal);
 		
+		//write a program to sort the list of nos
+		System.out.println("-------sort the list of nos------------");
+		numbers.stream().sorted().forEach(n->System.out.println(n));
+		List<Integer> collect = numbers.stream().sorted().collect(Collectors.toList());
+		System.out.println("Sorted nos : "+collect);
+		
+		//w.a.p to sort the list of integer in descending order
+		List<Integer> descList = numbers.stream().sorted(Collections.reverseOrder()).collect(Collectors.toList());	
+		System.out.println("Desc Order : "+descList);
+		
+		System.out.println("Sorting using Comparator in Ascending order :"+numbers.stream().sorted((n1,n2)->(n1<n2)?-1:(n1==n2)?0:1).collect(Collectors.toList()));
+		System.out.println("Sorting using Comparator in Descending order :"+numbers.stream().sorted((n1,n2)->(n1<n2)?1:(n1==n2)?0:-1).collect(Collectors.toList()));
+		
+		
 		//w.a.p to print employee name who is getting maximum salary
 		Employee employee = empList.stream().max((e1,e2)->e1.getEmpSalary()<e2.getEmpSalary()?-1:e1.getEmpSalary()==e2.getEmpSalary()?0:1).get();
-		System.out.println(employee);
+		System.out.println("Max Salary Employee :"+employee);
+		
+		//w.a.p to print employee name who is getting minimum salary
+		Employee employee1 = empList.stream().min((e1,e2)->e1.getEmpSalary()<e2.getEmpSalary()?-1:e1.getEmpSalary()==e2.getEmpSalary()?0:1).get();
+		System.out.println("Min Salary Employee :"+employee1);
 		
 	}
 
