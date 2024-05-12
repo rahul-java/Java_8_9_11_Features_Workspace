@@ -3,12 +3,13 @@ package java_8_features.stream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import java_8_features.collection_inhancement.Employee;
 
-public class StreamTest {
+public class StreamTest2 {
 
 	public static void main(String[] args) {
 		
@@ -105,7 +106,6 @@ public class StreamTest {
 		//w.a.p to print employee name who is getting maximum salary
 		Employee employee = empList.stream().max((e1,e2)->e1.getEmpSalary()<e2.getEmpSalary()?-1:e1.getEmpSalary()==e2.getEmpSalary()?0:1).get();
 		System.out.println(employee);
-		
 	}
 
 	private static boolean validateEmpName(String empName) {
