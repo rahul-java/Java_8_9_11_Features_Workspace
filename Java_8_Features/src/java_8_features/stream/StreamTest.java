@@ -3,6 +3,7 @@ package java_8_features.stream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -31,6 +32,7 @@ public class StreamTest {
 		empList.add(new Employee(3, "Akash", 45000));
 		empList.add(new Employee(4, "Lalit", 65000));
 		empList.add(new Employee(5, "Amrit", 75000));
+		//empList.add(new Employee(1, "RahulPandey", 95000));
 		
 		//print the emp whose name start with A without using java 8
 		for(int i=0;i<empList.size();i++)
@@ -65,6 +67,13 @@ public class StreamTest {
 		numbers.add(120);
 		numbers.add(125);
 		numbers.add(25);
+		numbers.add(250);
+		numbers.add(250);
+		numbers.add(125);
+		numbers.add(100);
+		numbers.add(105);
+		numbers.add(100);
+		numbers.add(105);
 		
 		//write a lambda expression to print the even numbers
 		System.out.println("----------write a lambda expression to print the even numbers-------");
@@ -140,6 +149,38 @@ public class StreamTest {
 		System.out.println("=================Sort Emp List by Salary DESC================== ");
 		empList.stream().sorted((e1,e2)->e1.getEmpSalary()<e2.getEmpSalary()?1:e1.getEmpSalary()==e2.getEmpSalary()?0:-1).forEach((e)->System.out.println(e)); 
 
+		System.out.println("==================================15-05-2024====================================");
+		///////////////////////////////////////////////////////===============15-05-2024================////////////////////////////////////////////////////
+	   
+		//write a program to Remove the duplicates from the numbers array list
+		System.out.println("Before removing duplicate :: "+numbers);
+		List<Integer> distinct = numbers.stream().distinct().collect(Collectors.toList());
+		System.out.println("After removing duplicate :: "+distinct);
+		
+		//write a program to print number of duplicate elements
+		//int duplicateElementCount=(int) (numbers.size()-numbers.stream().distinct().count());
+		int duplicateElementCount=numbers.size()-distinct.size();
+		System.out.println("Duplicate Elements Count is : "+duplicateElementCount);
+		
+		//write a program to Remove the duplicates from the Employee List
+		//System.out.println(empList);
+		System.out.println("============================Before distinct()========================");
+		empList.stream().forEach(e->System.out.println(e));
+		System.out.println("=====================After distinct()- Distinct Employees ========================");
+		empList.stream().distinct().forEach(e->System.out.println(e));
+		
+		//write a program to convert the given empList into hashMap<empId,Emp>
+		Map<Integer, Employee> empMap = empList.stream().collect(Collectors.toMap((e)->e.getEmpId(),(e)->e)); // this will throw exception while adding duplicate values in map 
+		//Map<Integer, Employee> empMap = empList.stream().distinct().collect(Collectors.toMap((e)->e.getEmpId(),(e)->e)); // this will remove duplicate values and then convert into map
+		System.out.println("Employee HashMap :::"+empMap);
+		
+		//write a program to create a list of employees whose name starts with 'A'.
+		List<String> empNameListStartsWithA = empList.stream().filter(e->e.getEmpName().startsWith("A")).map(e->e.getEmpName()).collect(Collectors.toList());
+		//empName starts with "A" OR "R"
+		List<String> empNameListStartsWithAorR = empList.stream().filter(e->(e.getEmpName().startsWith("A")||e.getEmpName().startsWith("R"))).map(e->e.getEmpName()).collect(Collectors.toList());
+		System.out.println("Name of the employees whose name starts with 'A' : "+empNameListStartsWithA);
+		System.out.println("Name of the employees whose name starts with 'A' OR 'R' : "+empNameListStartsWithAorR);
+	   
 	}
 
 	private static boolean validateEmpName(String empName) {
