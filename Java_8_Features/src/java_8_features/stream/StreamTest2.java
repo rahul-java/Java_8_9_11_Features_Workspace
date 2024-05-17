@@ -1,5 +1,7 @@
 package java_8_features.stream;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.DoubleSummaryStatistics;
@@ -136,5 +138,36 @@ public class StreamTest2 {
 		//Q. Input : List<List<String>> and Output : List<String>
 		List<String> list = l3.stream().flatMap(l->l.stream()).collect(Collectors.toList());
 		System.out.println("Concat list : "+list);
+		
+		System.out.println("========forEach()========forEachOrdered()===============");
+		numbers.stream().forEach(n->System.out.println(n));
+		System.out.println("=========No difference================");
+		numbers.stream().forEachOrdered(n->System.out.println(n));
+		
+		LocalDateTime startTime=null;
+		LocalDateTime endTime=null;
+		Duration duration=null;
+		
+		System.out.println("Start of stream() Operation ============>>>>>>");
+		startTime = LocalDateTime.now();
+		empList.stream().map(e->e.getEmpName()).forEach(n->System.out.println(n));
+		endTime=LocalDateTime.now();
+		duration = Duration.between(startTime, endTime);
+		System.out.println("Time taken for stream() operation :"+duration.toMillis());
+		
+		//stream() : insertion order is maintained
+		//stream() : sequential processing
+		
+		System.out.println("Start of parallelStream() Operation============>>>>>>");
+		startTime = LocalDateTime.now();
+		empList.parallelStream().map(e->e.getEmpName()).forEach(n->System.out.println(n));
+		//System.out.println("==========forEachOrdered()==================");
+		//empList.parallelStream().map(e->e.getEmpName()).forEachOrdered(n->System.out.println(n));
+		endTime=LocalDateTime.now();
+		duration = Duration.between(startTime, endTime);
+		System.out.println("Time taken for parallel stream() operation :"+duration.toMillis());
+		
+		//parallelStream() : insertion order is not maintained
+		//parallelStream() : parallel processing
 	}
 }

@@ -5,6 +5,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class LocalDate_LocalTime_Test {
 
@@ -38,6 +41,32 @@ public class LocalDate_LocalTime_Test {
 		
 		//String => Date 
 		//Date =>String
+		System.out.println("=======Date =>String==============Convert Date to String================");
+		LocalDateTime d3 = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		
+		String dateTimeString = d3.format(formatter);
+		String dateString = d3.format(formatter1);
+		System.out.println("Date Time in String Format : "+dateTimeString); //2024-05-16 20:17:01
+		System.out.println("Date in String Format : "+dateString); //2024-05-16
+		
+		System.out.println("=======String => Date==============Convert String to Date================");
+		String dateTime="2023-12-11 17:30:25";
+		String dateString1="2023-12-11";
+		LocalDateTime localDateTime = LocalDateTime.parse(dateTime, formatter);
+		LocalDate localDate = LocalDate.parse(dateString1, formatter1);
+		System.out.println("Formatted Date Time :"+ localDateTime); //2023-12-11T17:30:25
+		System.out.println("Formatted Date :"+ localDate); //2023-12-11
+		
+		System.out.println("=======================ZonedDateTime=======================");
+		
+		ZonedDateTime zonedDateTime = ZonedDateTime.now();
+		System.out.println(zonedDateTime);
+		
+		//ZonedDateTime withZoneSameInstant = zonedDateTime.withZoneSameInstant(ZoneId.of("America/New_York"));
+		ZonedDateTime withZoneSameInstant = zonedDateTime.withZoneSameInstant(ZoneId.of("Australia/Sydney"));
+		System.out.println(withZoneSameInstant);
 		
 		
 	}
