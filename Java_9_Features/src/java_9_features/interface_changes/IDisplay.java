@@ -1,4 +1,4 @@
-package java_9_features.interfaces;
+package java_9_features.interface_changes;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

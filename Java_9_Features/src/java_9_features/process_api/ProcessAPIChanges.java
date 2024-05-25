@@ -1,4 +1,4 @@
-package java_9_features.java_9_changes;
+package java_9_features.process_api;
 
 import java.io.IOException;
 import java.lang.ProcessHandle.Info;
