@@ -39,8 +39,8 @@ public class MultiThreadingTest {
 		
 		for(int i=0;i<empList.size();i++)
 		{
-			//SalaryCalculation sal=new SalaryCalculation(empList.get(i));
-			SalaryCalculation2 sal=new SalaryCalculation2(empList.get(i));
+			//SalaryCalculation sal=new SalaryCalculation(empList.get(i)); //Runnable
+			SalaryCalculation2 sal=new SalaryCalculation2(empList.get(i)); //Callable
 			ex.submit(sal);
 		}
 		
