@@ -1,12 +1,10 @@
-package java_8_features.thread.multi_threading;
+package java_9_features.thread;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-
-
 
 public class MultiThreadingTest {
 
@@ -47,11 +45,9 @@ public class MultiThreadingTest {
 			//SalaryCalculation sal=new SalaryCalculation(empList.get(i)); //Runnable
 			SalaryCalculation2 sal=new SalaryCalculation2(empList.get(i)); //Callable
 			taskList.add(sal);
-			//ex.submit(sal); // executing thread one by one
-			//System.out.println(ex.submit(sal));
 		}
-		ex.invokeAll(taskList); //executing thread based on the thread pool size
-		ex.shutdown();
+		
+		ex.invokeAll(taskList);
 		System.out.println(empList);
 		
 	}
