@@ -53,5 +53,25 @@ public class StringTest {
 		//System.out.println(s.repeat(-2)); //Exception in thread "main" java.lang.IllegalArgumentException: count is negative: -2
 		//System.out.println(s.repeat(Integer.MAX_VALUE)); //Exception in thread "main" java.lang.OutOfMemoryError: Required length exceeds implementation limit
 		
+		System.gc(); // this will put a request to the Garbage Collection
+	    //Runtime.getRuntime().gc(); // same as above
+		
+		String str=" Rahul Pandey ";
+		System.out.println(str);
+		System.out.println(str.trim()); // it will remove spaces before and after of the string
+		
+		//Java 11
+		System.out.println(str.stripLeading()); //it will remove starting spaces only 
+		System.out.println(str.stripTrailing()); //it will remove ending spaces only 
+		System.out.println(str.strip());
+		
+		String str2='\u2001'+"String  with Spaces in latest version"+'\u2001';
+		System.out.println(str2);
+		System.out.println(str2.strip()); // it will remove both spaces unicode
+		System.out.println(str2.trim()); //it will not remove spaces unicode bcoz not able to identified spaces ('U+0020' (the space character).)
+		
+		String str3='\u0020'+"String  with Spaces in older version"+'\u0020';
+		System.out.println(str3.strip()); // it will remove both spaces
+		System.out.println(str3.trim()); // it will remove both spaces bcoz it is able to identified space unicode '\u0020'
 	}
 }
