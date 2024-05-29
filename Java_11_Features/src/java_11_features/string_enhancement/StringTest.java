@@ -36,5 +36,22 @@ public class StringTest {
 		System.out.println(s7==s8); //false
 		System.out.println(s7==s9); //true
 		
+		//s="Rahul"
+		s.concat(" Hi"); // it will be saved in new location
+		System.out.println(s); //Rahul
+		s=s.concat(" Hi");
+		s.substring(0,2);
+		System.out.println(s);//Rahul Hi
+		s=s.substring(0, 2);
+		System.out.println(s);//Ra
+		System.out.println(s.concat(" Hello"));//Ra Hello
+		s.repeat(2); //Java 11
+		System.out.println(s);//Ra
+		s=s.repeat(2); //Java 11
+		System.out.println(s); //RaRa
+		System.out.println(s.repeat(2)); //RaRaRaRa
+		//System.out.println(s.repeat(-2)); //Exception in thread "main" java.lang.IllegalArgumentException: count is negative: -2
+		//System.out.println(s.repeat(Integer.MAX_VALUE)); //Exception in thread "main" java.lang.OutOfMemoryError: Required length exceeds implementation limit
+		
 	}
 }
