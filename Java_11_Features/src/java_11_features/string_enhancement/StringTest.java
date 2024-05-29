@@ -1,5 +1,10 @@
 package java_11_features.string_enhancement;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 public class StringTest {
 
 	public static void main(String[] args) {
@@ -73,5 +78,53 @@ public class StringTest {
 		String str3='\u0020'+"String  with Spaces in older version"+'\u0020';
 		System.out.println(str3.strip()); // it will remove both spaces
 		System.out.println(str3.trim()); // it will remove both spaces bcoz it is able to identified space unicode '\u0020'
+		
+		String j="";
+		System.out.println(j.isBlank()); //true
+		System.out.println(j.isEmpty()); //true
+		j=" ";
+		System.out.println(j.isBlank()); //true
+		System.out.println(j.isEmpty()); //false
+		j="ABC";
+		System.out.println(j.isBlank()); //false
+		System.out.println(j.isEmpty()); //false
+		
+		System.out.println("Lines method output : ");
+		String msg="Karthik is teaching \n Java \n new Features.";
+		System.out.println(msg);
+		// \n or \r or \n\r :: are called line terminators \n and \r both are same
+		System.out.println(Arrays.toString(msg.split("\n"))); //[Karthik is teaching ,  Java ,  new Features.]
+		
+		//lines() method
+		System.out.println("============lines() method============");
+		msg.lines().forEach(p->System.out.println(p));
+		System.out.println("-----------------------");
+		msg.lines().filter(p->p.equalsIgnoreCase(" JAVA ")).forEach(p->System.out.println(p));
+		System.out.println("----------------");
+		Arrays.stream(msg.split("\n")).forEach(p->System.out.println(p)); //split() method has its own limitation
+		
+		//JAVA 10 Feature
+		//local variable type inference
+		//it is allowed inside method only or only local variable scope
+		var v1="Rahul";
+		var v2=101;
+		var v3=new ArrayList<Integer>();
+		var v4=105.50;
+		var v5=1010;
+		//var v6; //error occur , initialization must required
+		System.out.println("Local variable type inference : "+v2+v4); //it will concat
+		System.out.println("Local variable type inference : "+v2+v5); //it will concat
+		
+		Map<String,Integer> map = m1();
+		map.put("num1", 1010);
+		var map2=m1();
+		map2.put("num1", 2020);
+		
+	}
+	
+	//var v1=10; // it is not allowed here or global variable or class member
+	
+	public static Map<String, Integer> m1(){
+		return new HashMap<String, Integer>();
 	}
 }
