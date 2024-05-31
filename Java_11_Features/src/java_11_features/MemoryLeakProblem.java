@@ -45,3 +45,16 @@ public class MemoryLeakProblem {
 	}
 
 }
+
+/*
+ * Exception in thread "Producer Thread" java.lang.OutOfMemoryError: Java heap space
+	at com.mkyong.java11.jep328.OOME.lambda$main$0(OOME.java:14)
+	at com.mkyong.java11.jep328.OOME$$Lambda$14/0x0000000800066840.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+ *
+ * 
+ * $ javac MemoryLeakProblem.java
+
+$ java -XX:StartFlightRecording=duration=30s,settings=profile,filename=leak.jfr MemoryLeakProblem
+ * */
+ 
